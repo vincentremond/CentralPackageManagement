@@ -1,4 +1,5 @@
-﻿open System.IO
+﻿open System
+open System.IO
 open System.Text
 open System.Xml
 open System.Xml.Linq
@@ -69,6 +70,24 @@ let currentCentralPackageReferences =
 let projects =
     Directory.GetFiles(".", "*.?sproj", SearchOption.AllDirectories) |> Seq.toList
 
+if Environment.GetCommandLineArgs() |> Array.contains "--clean" then
+    
+    projects
+    |> List.iter (fun project ->
+        let projectDocument = XDocument.Load(project)
+
+        projectDocument.Root.Elements("ItemGroup").Elements("PackageReference")
+        |> List.ofSeq
+        |> List.iter (fun packageReference ->
+            let packageId = packageReference.Attribute(XName.Get("Include")).Value
+
+            if not <| (currentCentralPackageReferences |> Seq.exists (fun reference -> reference.PackageId.Value = packageId)) then
+                packageReference.Remove()
+        )
+
+        saveXmlWithoutDeclaration projectDocument project
+    )
+
 let newCentralPackageReferences =
     projects
     |> Seq.collect (fun project ->
@@ -105,7 +124,7 @@ let newCentralPackageReferences =
 let allPackageReferences =
     currentCentralPackageReferences @ newCentralPackageReferences
     |> Seq.distinct
-    |> Seq.sortBy (_.PackageId)
+    |> Seq.sortBy (_.PackageId.Value.ToLowerInvariant())
     |> Seq.toList
 
 let newCentralPackageReferencesContent =
@@ -120,7 +139,7 @@ let newCentralPackageReferencesContent =
                     newCentralPackageReferences
                     |> Seq.map (fun reference ->
                         XElement(
-                            "PackageReference",
+                            "PackageVersion",
                             XAttribute(XName.Get("Include"), reference.PackageId.Value),
                             XAttribute(XName.Get("Version"), reference.Version.Value)
                         )

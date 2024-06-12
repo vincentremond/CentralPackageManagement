@@ -122,7 +122,7 @@ let newCentralPackageReferences =
     |> Seq.toList
 
 let allPackageReferences =
-    currentCentralPackageReferences @ newCentralPackageReferences
+    (currentCentralPackageReferences @ newCentralPackageReferences)
     |> Seq.distinct
     |> Seq.sortBy (_.PackageId.Value.ToLowerInvariant())
     |> Seq.toList
@@ -136,7 +136,7 @@ let newCentralPackageReferencesContent =
                 XElement("PropertyGroup", XElement("ManagePackageVersionsCentrally", true)),
                 XElement(
                     "ItemGroup",
-                    newCentralPackageReferences
+                    allPackageReferences
                     |> Seq.map (fun reference ->
                         XElement(
                             "PackageVersion",

@@ -51,7 +51,7 @@ let currentCentralPackageReferences =
                 items
                 |> Seq.map (fun child ->
                     match child.Name.LocalName with
-                    | "PackageReference" ->
+                    | "PackageVersion" ->
                         let packageId = child.Attribute(XName.Get("Include")).Value
                         let version = child.Attribute(XName.Get("Version")).Value
 
@@ -59,7 +59,7 @@ let currentCentralPackageReferences =
                             PackageId = PackageId packageId
                             Version = Version version
                         }
-                    | _ -> failwith "Unexpected element"
+                    | _ -> failwith $"Unexpected element %A{child}"
                 )
             )
             |> Seq.toList

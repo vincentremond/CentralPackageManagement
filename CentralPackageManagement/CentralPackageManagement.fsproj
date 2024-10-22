@@ -9,6 +9,8 @@
   <ItemGroup>
     <None Include="paket.references" />
     <Compile Include="Types.fs" />
+    <Compile Include="Migrate.fs" />
+    <Compile Include="Rollback.fs" />
     <Compile Include="String.fs" />
     <Compile Include="Version.fs" />
     <Compile Include="Program.fs" />

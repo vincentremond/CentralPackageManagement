@@ -1,6 +1,12 @@
 source https://api.nuget.org/v3/index.json
 
 storage: none
+nuget coverlet.collector
+nuget FluentAssertions
 nuget FParsec
 nuget FSharp.Core
 nuget FsToolkit.ErrorHandling
+nuget Microsoft.NET.Test.Sdk
+nuget NUnit
+nuget NUnit.Analyzers
+nuget NUnit3TestAdapter

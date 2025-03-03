@@ -1,0 +1,7 @@
+FSharp.Core
+coverlet.collector
+FluentAssertions
+Microsoft.NET.Test.Sdk
+NUnit
+NUnit.Analyzers
+NUnit3TestAdapter

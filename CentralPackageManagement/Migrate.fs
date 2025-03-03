@@ -14,18 +14,6 @@ module Migrate =
         
         let centralPackageManagementFileName = "Directory.Packages.props"
 
-        let saveXmlWithoutDeclaration (document: XDocument) (fileName: string) =
-            let utf8Encoding = UTF8Encoding(encoderShouldEmitUTF8Identifier = true)
-            let xmlSettings = XmlWriterSettings()
-            xmlSettings.OmitXmlDeclaration <- true
-            xmlSettings.Indent <- true
-            xmlSettings.Encoding <- utf8Encoding
-
-            use streamWriter = new StreamWriter(fileName, false, utf8Encoding)
-            use xmlWriter = XmlWriter.Create(streamWriter, xmlSettings)
-
-            document.Save(xmlWriter)
-
         let currentCentralPackageReferences =
             if File.Exists(centralPackageManagementFileName) then
                 try
@@ -78,7 +66,7 @@ module Migrate =
                         packageReference.Remove()
                 )
 
-                saveXmlWithoutDeclaration projectDocument project
+                XDocument.saveXmlWithoutDeclaration projectDocument project
             )
 
         let newCentralPackageReferences =
@@ -108,7 +96,7 @@ module Migrate =
                             }
                     )
 
-                saveXmlWithoutDeclaration projectDocument project
+                XDocument.saveXmlWithoutDeclaration projectDocument project
 
                 packageReferences
             )
@@ -143,5 +131,5 @@ module Migrate =
                 |]
             )
 
-        saveXmlWithoutDeclaration newCentralPackageReferencesContent centralPackageManagementFileName
+        XDocument.saveXmlWithoutDeclaration newCentralPackageReferencesContent centralPackageManagementFileName
 

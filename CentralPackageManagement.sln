@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{860F79
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CentralPackageManagement.Tests", "CentralPackageManagement.Tests\CentralPackageManagement.Tests.fsproj", "{DAB4FE4D-A728-4CAE-B919-14C026C984C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,5 +29,9 @@ Global
 		{B626AA70-DEE0-4B36-89A7-83A89A7C5D6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B626AA70-DEE0-4B36-89A7-83A89A7C5D6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B626AA70-DEE0-4B36-89A7-83A89A7C5D6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAB4FE4D-A728-4CAE-B919-14C026C984C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAB4FE4D-A728-4CAE-B919-14C026C984C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAB4FE4D-A728-4CAE-B919-14C026C984C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAB4FE4D-A728-4CAE-B919-14C026C984C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

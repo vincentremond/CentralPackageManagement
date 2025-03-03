@@ -4,7 +4,6 @@ open System.IO
 open System.Xml.Linq
 open CentralPackageManagement.Types
 open Pinicola.FSharp.SpectreConsole
-open Spectre.Console
 
 [<RequireQualifiedAccess>]
 module Rollback =

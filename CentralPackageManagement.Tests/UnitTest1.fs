@@ -1,5 +1,6 @@
 module CentralPackageManagement.Tests
 
+open CentralPackageManagement.Types
 open FluentAssertions
 open NUnit.Framework
 

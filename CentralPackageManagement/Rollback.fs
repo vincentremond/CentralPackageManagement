@@ -15,9 +15,7 @@ module Rollback =
             XDocument.Load(centralPackageManagementFileName)
 
         let references =
-            centralPackageManagementDocument.Root
-                .Elements("ItemGroup")
-                .Elements("PackageVersion")
+            centralPackageManagementDocument.Root.Elements("ItemGroup").Elements("PackageVersion")
             |> Seq.map (fun packageVersion ->
                 let packageId = packageVersion.Attribute(XName.Get("Include")).Value
                 let version = packageVersion.Attribute(XName.Get("Version")).Value
@@ -50,7 +48,8 @@ module Rollback =
                     |> Seq.tryFind (fun reference -> reference.PackageId.Value = packageId)
 
                 match reference with
-                | Some reference -> packageReference.SetAttributeValue(XName.Get("Version"), reference.Version.toString ())
+                | Some reference ->
+                    packageReference.SetAttributeValue(XName.Get("Version"), reference.Version.toString ())
                 | None -> packageReference.SetAttributeValue(XName.Get("Version"), "???")
 
             XDocument.saveXmlWithoutDeclaration projectDocument projectFile

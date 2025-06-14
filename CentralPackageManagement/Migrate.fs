@@ -9,9 +9,9 @@ open CentralPackageManagement.Types
 
 [<RequireQualifiedAccess>]
 module Migrate =
-    
+
     let toCentralPackageManagement () =
-        
+
         let centralPackageManagementFileName = "Directory.Packages.props"
 
         let currentCentralPackageReferences =
@@ -132,4 +132,3 @@ module Migrate =
             )
 
         XDocument.saveXmlWithoutDeclaration newCentralPackageReferencesContent centralPackageManagementFileName
-

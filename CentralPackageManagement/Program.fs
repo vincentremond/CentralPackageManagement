@@ -11,7 +11,7 @@ let main argv =
     else
         AnsiConsole.markupLineInterpolated $"[bold][yellow]Migrating to central package management[/][/]"
         Migrate.toCentralPackageManagement ()
-    
+
     AnsiConsole.markupLineInterpolated $"[bold][green]Done[/][/]"
 
     0 // return an integer exit code¡

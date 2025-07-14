@@ -19,5 +19,3 @@ module XDocument =
         use xmlWriter = XmlWriter.Create(streamWriter, xmlSettings)
 
         document.Save(xmlWriter)
-
-

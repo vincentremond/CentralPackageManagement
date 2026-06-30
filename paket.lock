@@ -25,7 +25,7 @@ NUGET
     FParsec (1.1.1)
       FSharp.Core (>= 4.3.4) - restriction: || (>= net45) (>= netstandard2.0)
       System.ValueTuple (>= 4.4) - restriction: >= net45
-    FSharp.Core (10.1.301)
+    FSharp.Core (11.0.100)
     FsToolkit.ErrorHandling (5.2)
       FSharp.Core (>= 6.0.4) - restriction: || (&& (< net9.0) (>= netstandard2.1)) (&& (>= netstandard2.0) (< netstandard2.1))
       FSharp.Core (>= 9.0.300) - restriction: >= net9.0
